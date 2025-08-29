@@ -1,19 +1,9 @@
 import express from 'express';
-import pkg from 'pg';
-import dotenv from 'dotenv';
+import pool from './db.js';
 const app = express();
 const port = 3001;
-const { Pool } = pkg;
-dotenv.config();
 
-const pool = new Pool({
-   user: process.env.PGUSER,
-   host: process.env.PGHOST,
-   port: process.env.PGPORT ? parseInt(process.env.PGPORT, 10) : undefined,
-   database: process.env.PGDATABASE,
-});
-
-app.get('/', async (req, res) => {
+app.get('/api/v1/todos', async (req, res) => {
    try {
       const result = await pool.query('SELECT * FROM todos');
       res.json(result.rows);
