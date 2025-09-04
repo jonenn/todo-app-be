@@ -1,14 +1,18 @@
+import {
+   PGPORT,
+   PGHOST,
+   PGUSERNAME,
+   PGDATABASE,
+   PGPASSWORD,
+} from './config.js';
 import pkg from 'pg';
-import dotenv from 'dotenv';
-import { PORT, USER, DATABASE, HOST } from './config.js';
 const { Pool } = pkg;
-dotenv.config();
-
 const pool = new Pool({
-   user: USER,
-   database: DATABASE,
-   host: HOST,
-   port: Number(PORT),
+   user: PGUSERNAME,
+   database: PGDATABASE,
+   host: PGHOST,
+   port: Number(PGPORT),
+   password: PGPASSWORD,
 });
 
 export default pool;
