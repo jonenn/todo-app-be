@@ -4,10 +4,10 @@ dotenv.config();
 export const { PGPORT, PGHOST, PGUSERNAME, PGDATABASE, PGPASSWORD } =
    process.env;
 
-console.log('Loaded env:', {
-   PGPORT,
-   PGHOST,
-   PGUSERNAME,
-   PGDATABASE,
-   PGPASSWORD,
-});
+// console.log('Loaded env:', {
+//    PGPORT,
+//    PGHOST,
+//    PGUSERNAME,
+//    PGDATABASE,
+//    PGPASSWORD,
+// });

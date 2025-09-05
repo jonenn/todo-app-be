@@ -2,7 +2,7 @@ import { Router } from 'express';
 import pool from '../db.js';
 const router = Router();
 
-router.get('/api/v1/todos', async (req, res) => {
+router.get('/', async (req, res) => {
    try {
       const result = await pool.query('SELECT * FROM todos');
       res.json(result.rows);
@@ -12,7 +12,7 @@ router.get('/api/v1/todos', async (req, res) => {
    }
 });
 
-router.post('/api/v1/todos', async (req, res) => {
+router.post('/', async (req, res) => {
    try {
       const { content, checked } = req.body;
       console.log(content);
