@@ -5,8 +5,8 @@ const router = Router();
 
 router.get('/', async (req, res) => {
    try {
-      const terms = req.query.term || 'Search term was not specified';
-      const category = req.query.cat || 'Any';
+      const terms = req.query.term || 'Search term missing';
+      const category = req.query.cat || 'general';
       const result = await pool.query(
          'SELECT * FROM todos WHERE content LIKE $1',
          [`%${terms}%`]
