@@ -41,4 +41,15 @@ router.get('/:id', async (req, res) => {
    }
 });
 
+router.patch('/:id', async (req, res) => {
+   const { id } = req.params;
+   const { content, checked, category } = req.body;
+   try {
+      const response = await pool.query(
+         'UPDATE content = COALESCE($1, content) checked = COALESCE($2, checked) category = COALESCE($3, category) FROM todos WHERE id = $4',
+         [content, checked, category]
+      );
+   } catch (err) {}
+});
+
 export default router;
