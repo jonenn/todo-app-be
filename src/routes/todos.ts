@@ -24,20 +24,23 @@ router.post('/', async (req, res) => {
       res.status(201).json(result.rows[0]);
    } catch (err) {
       console.error(err);
-      res.status(500).send('Error inserting todo');
+      res.status(500).send('Error inserting to-do');
    }
 });
 
 router.get('/:id', async (req, res) => {
    const { id } = req.params;
    try {
-      const response = await pool.query('SELECT * FROM todos WHERE id = $1', [
+      const result = await pool.query('SELECT * FROM todos WHERE id = $1', [
          id,
       ]);
-      return res.status(200).json(response.rows[0]);
+      if (result.rows.length === 0) {
+         return res.status(404).json({ error: 'To-do does not exist' });
+      }
+      return res.status(200).json(result.rows[0]);
    } catch (err) {
       console.error(err);
-      return res.status(500).json({ error: "Couldn't get the user" });
+      return res.status(500).json({ error: "Couldn't get the to-do" });
    }
 });
 
@@ -45,7 +48,7 @@ router.patch('/:id', async (req, res) => {
    const { id } = req.params;
    const { content, checked, category } = req.body;
    try {
-      const response = await pool.query(
+      const result = await pool.query(
          'UPDATE content = COALESCE($1, content) checked = COALESCE($2, checked) category = COALESCE($3, category) FROM todos WHERE id = $4',
          [content, checked, category]
       );

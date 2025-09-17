@@ -9,7 +9,7 @@ const LoggerMW = (req: Request, res: Response, next: NextFunction) => {
 
    res.on('finish', () => {
       const duration = Date.now() - start;
-      console.log(`[${timestamp} Response: ${res.statusCode} - ${duration}ms]`);
+      console.log(`[${timestamp}] Response: ${res.statusCode} - ${duration}ms`);
    });
 
    next();
