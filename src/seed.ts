@@ -16,7 +16,7 @@ const defaultTodos = [
 
 const initTable = async () =>
    await pool.query(
-      `CREATE TABLE todos (id SERIAL PRIMARY KEY, content TEXT NOT NULL, category VARCHAR(150) DEFAULT 'general', checked boolean DEFAULT false, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`
+      `CREATE TABLE IF NOT EXISTS todos (id SERIAL PRIMARY KEY, content TEXT NOT NULL, category VARCHAR(150) DEFAULT 'general', checked boolean DEFAULT false, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`
    );
 
 const setSeed = async (content: string) => {
