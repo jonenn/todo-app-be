@@ -1,8 +1,8 @@
 import express from 'express';
-import todosRouter from './routes/todos.js';
-import searchRouter from './routes/search.js';
-import loggerMW from './middlewares/logger.js';
-import errorHandler from './middlewares/errorHandler.js';
+import todosRouter from './routes/todos';
+import searchRouter from './routes/search';
+import loggerMW from './middlewares/logger';
+import errorHandler from './middlewares/errorHandler';
 
 const app = express();
 const port = 3000;

@@ -1,10 +1,4 @@
-import {
-   PGPORT,
-   PGHOST,
-   PGUSERNAME,
-   PGDATABASE,
-   PGPASSWORD,
-} from './config.js';
+import { PGPORT, PGHOST, PGUSERNAME, PGDATABASE, PGPASSWORD } from './config';
 import { Pool } from 'pg';
 const pool = new Pool({
    user: PGUSERNAME,
