@@ -6,7 +6,11 @@
       "moduleResolution": "Node",
       "strict": true,
       "skipLibCheck": true,
-      "noEmit": true
+      "noEmit": true,
+      "baseUrl": "./src",
+      "paths": {
+         "@/*": ["*"]
+      }
    },
    "include": ["src"]
 }

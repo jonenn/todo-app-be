@@ -1,6 +1,6 @@
 import express from 'express';
-import todosRouter from './routes/todos';
-import searchRouter from './routes/search';
+import todosRoute from './routes/todos';
+import searchRoute from './routes/search';
 import loggerMW from './middlewares/logger';
 import errorHandler from './middlewares/errorHandler';
 
@@ -10,8 +10,8 @@ const port = 3000;
 app.use(express.json());
 app.use(loggerMW);
 app.use(errorHandler);
-app.use('/api/v1/todos', todosRouter);
-app.use('/api/v1/search', searchRouter);
+app.use('/api/v1/todos', todosRoute);
+app.use('/api/v1/search', searchRoute);
 // app.use('/api/v1/error', (req, res, next) => {
 //    next(new Error('Intensional error'));
 // });
